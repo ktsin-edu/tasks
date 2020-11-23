@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace task1.Reader
 {
-    interface IDataScanner
+    public interface IDataScanner
     {
+        public bool Open(object path);
+        public bool Read(IDataCollector collector);
     }
 }

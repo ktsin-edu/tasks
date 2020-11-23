@@ -7,7 +7,7 @@ using task1.DataClasses;
 
 namespace task1.Reader
 {
-    interface IDataCollector
+    public interface IDataCollector
     {
         public void Push(BasicProduct product);
         public BasicProduct[] GetSource();
