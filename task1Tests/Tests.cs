@@ -81,7 +81,11 @@ namespace task1Tests
             JSONScanner scanner = new();
             Assert.IsTrue(scanner.Open("test.json"));
             Assert.IsTrue(scanner.Read(collector));
-            Assert.IsTrue(true);
+            var res = collector.GetSource();
+            for(int i = 0; i < test.Count; i++)
+            {
+                Assert.IsTrue(test[i].Equals(res[i]));
+            }
         }
     }
 }

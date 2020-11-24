@@ -9,7 +9,7 @@ namespace task1.DataClasses.Products
 {
     public class BasicCollector : IDataCollector
     {
-        public BasicCollector() { }
+        public BasicCollector() { products = new(); }
         public BasicCollector(List<BasicProduct> products)
         {
             if (products != null)
