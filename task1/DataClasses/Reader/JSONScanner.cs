@@ -30,7 +30,7 @@ namespace task1.Reader
             string jsonRepresentation = File.ReadAllText(path);
             var list = JsonConvert
                         .DeserializeObject<List<BasicProduct>>(jsonRepresentation, 
-                                                               new JsonSerializerSettings());
+                                                               settings);
             if (list.Count != 0)
             {
                 foreach (var element in list)
