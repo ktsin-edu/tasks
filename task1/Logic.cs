@@ -32,14 +32,15 @@ namespace task1
             return res.ToArray();
         }
 
-        public static BasicProduct[] GetProductsByIngiridientWeight()
+        public static BasicProduct[] GetProductsByIngiridientWeight(BasicProduct[] products, string ingridientName, double weight)
         {
-            return null;
+            var res = products.Where(e => e.ingridients?.FindAll(el => (el.weight > weight && el.name == ingridientName))?.Count > 0);
+            return res?.ToArray();
         }
 
-        public static BasicProduct[] GetProductsByIngiridientsCount()
+        public static BasicProduct[] GetProductsByIngiridientsCount(BasicProduct[] products, int ingridientCount)
         {
-            return null;
+            return products.Where(e=>e.ingridients.Count > ingridientCount).ToArray();
         }
 
         private static Func<double, double, bool> compareDouble = new((a, b) => Math.Abs(a - b) < 0.000001);
