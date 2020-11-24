@@ -16,7 +16,8 @@ namespace task1.Writer
         {
             settings = new JsonSerializerSettings
             {
-                TypeNameHandling = TypeNameHandling.Objects
+                TypeNameHandling = TypeNameHandling.Objects,
+                Formatting = Formatting.Indented
             };
         }
 

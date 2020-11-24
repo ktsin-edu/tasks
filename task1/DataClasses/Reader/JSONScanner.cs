@@ -13,7 +13,8 @@ namespace task1.Reader
     {
         public JSONScanner()
         {
-            settings = new() { TypeNameHandling = TypeNameHandling.Objects };
+            settings = new() { TypeNameHandling = TypeNameHandling.Objects,
+                               Formatting = Formatting.Indented };
         }
 
         public bool Open(object path)

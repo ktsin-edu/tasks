@@ -19,9 +19,11 @@ namespace task1.DataClasses
             this.productCount = prodCount;
         }
         [IgnoreDataMember]
-        public double  Caloricity { get => (double)ingridients?.Sum((ingridient) => ingridient.caloricity*ingridient.weight); }
+        public double Caloricity { get => (double)ingridients?.Sum((ingridient) => ingridient.caloricity * ingridient.weight); }
         [IgnoreDataMember]
-        public double Price { get => (double)ingridients?.Sum((ingridient) => ingridient.price*ingridient.weight)*overprice; }
+        public double Price { get => (double)ingridients?.Sum((ingridient) => ingridient.price * ingridient.weight); }
+        [IgnoreDataMember]
+        public double SalePrice { get => (double)ingridients?.Sum((ingridient) => ingridient.price * ingridient.weight) * overprice; }
 
         public readonly string categoryName;
 
@@ -34,8 +36,8 @@ namespace task1.DataClasses
 
         public override int GetHashCode()
         {
-            return categoryName.GetHashCode()^
-                   productName.GetHashCode()^
+            return categoryName.GetHashCode() ^
+                   productName.GetHashCode() ^
                    ingridients.GetHashCode();
         }
 

@@ -50,6 +50,11 @@ namespace task1Tests
             return products;
         }
 
+        private static Ingridient GetIngridientExample()
+        {
+            return new Ingridient("test name", 45, 124, 0.78);
+        }
+
         [TestMethod]
         public void CaloricityTest()
         {
@@ -87,5 +92,7 @@ namespace task1Tests
                 Assert.IsTrue(test[i].Equals(res[i]));
             }
         }
+
+
     }
 }
