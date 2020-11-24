@@ -14,14 +14,17 @@ namespace task1.Writer
     {
         public JSONWriter()
         {
-            settings.TypeNameHandling = TypeNameHandling.Objects;
+            settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Objects
+            };
         }
 
         public bool Open(object path)
         {
             this.path = path as string;
             if (this.path != null)
-                return File.Exists(this.path);
+                return true;
             else
                 return false;
         }
@@ -31,8 +34,8 @@ namespace task1.Writer
             try
             {
                 var src = collector.GetSource();
-                var jsonString = JsonConvert.SerializeObject(src);
-                var fileStream = File.Open(this.path, FileMode.OpenOrCreate);
+                var jsonString = JsonConvert.SerializeObject(src, settings);
+                var fileStream = File.Open(this.path, File.Exists(path)?FileMode.Truncate:FileMode.CreateNew);
                 fileStream.Write(Encoding.Default.GetBytes(jsonString));
                 fileStream.Flush();
                 fileStream.Close();

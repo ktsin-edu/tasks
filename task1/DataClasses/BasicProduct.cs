@@ -1,22 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Newtonsoft.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace task1.DataClasses
 {
+    [Serializable]
     public abstract class BasicProduct : IProduct
     {
-        public BasicProduct(string categoryName, string productName, double overprice)
+        public BasicProduct(string categoryName, string productName, double overprice, int prodCount)
         {
             this.overprice = overprice;
             this.productName = productName;
             this.categoryName = categoryName;
+            this.productCount = prodCount;
         }
-
+        [IgnoreDataMember]
         public double  Caloricity { get => (double)ingridients?.Sum((ingridient) => ingridient.caloricity*ingridient.weight); }
-
+        [IgnoreDataMember]
         public double Price { get => (double)ingridients?.Sum((ingridient) => ingridient.price*ingridient.weight)*overprice; }
 
         public readonly string categoryName;
@@ -37,12 +41,14 @@ namespace task1.DataClasses
 
         public override bool Equals(object obj)
         {
-            return (this.Price == ((BasicProduct)obj).Price) &&
-                   (this.Caloricity == ((BasicProduct)obj).Caloricity);
+            return (this.Price == (obj as BasicProduct)?.Price) &&
+                   (this.Caloricity == (obj as BasicProduct)?.Caloricity);
         }
-
-        protected List<Ingridient> ingridients;
-
-        private readonly double overprice;
+        [DataMember]
+        public List<Ingridient> ingridients;
+        [DataMember]
+        public readonly double overprice;
+        [DataMember]
+        public int productCount;
     }
 }

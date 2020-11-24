@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace task1.DataClasses.Products
 {
+    [Serializable]
     public class Loaf : BasicProduct
     {
-        public Loaf(string productName, List<Ingridient> ingridients) : base("Loaf", productName, 1.4)
+        public Loaf(string productName, List<Ingridient> ingridients, int prodCount) : base("Loaf", productName, 1.4, prodCount)
         {
             this.ingridients = ingridients;
         }
