@@ -12,6 +12,7 @@ namespace task1
         public static BasicProduct[] GetSortedCopyByCaloricity(BasicProduct[] products)
         {
             BasicProduct[] copy = Array.Empty<BasicProduct>();
+            Array.Resize(ref copy, products.Length);
             products.CopyTo(copy, 0);
             Array.Sort(copy, (a, b) => b.Caloricity.CompareTo(a.Caloricity));
             return copy;
@@ -20,6 +21,7 @@ namespace task1
         public static BasicProduct[] GetSortedCopyByCost(BasicProduct[] products)
         {
             BasicProduct[] copy = Array.Empty<BasicProduct>();
+            Array.Resize(ref copy, products.Length);
             products.CopyTo(copy, 0);
             Array.Sort(copy, (a, b) => b.Price.CompareTo(a.Price));
             return copy;

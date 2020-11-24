@@ -2,6 +2,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using task1;
 using task1.DataClasses;
 using task1.DataClasses.Products;
 using task1.Reader;
@@ -14,9 +16,12 @@ namespace task1Tests
     {
         private static BasicProduct GetBasicProductExample()
         {
-            List<Ingridient> ingridients = new() { new Ingridient("a", 100, 200, 0.2),
-                                                   new Ingridient("b", 300, 100, 1.2),
-                                                   new Ingridient("c", 167, 314, 0.3)};
+            List<Ingridient> ingridients = new()
+            {
+                new Ingridient("a", 100, 200, 0.2),
+                new Ingridient("b", 300, 100, 1.2),
+                new Ingridient("c", 167, 314, 0.3)
+            };
             return new Bread("RWR", ingridients, 123);
         }
 
@@ -64,7 +69,7 @@ namespace task1Tests
         [TestMethod]
         public void PriceTest()
         {
-            Assert.AreEqual(516.12, GetBasicProductExample().Price, 0.000001);
+            Assert.AreEqual(516.12, GetBasicProductExample().SalePrice, 0.000001);
         }
 
         [TestMethod]
@@ -87,12 +92,52 @@ namespace task1Tests
             Assert.IsTrue(scanner.Open("test.json"));
             Assert.IsTrue(scanner.Read(collector));
             var res = collector.GetSource();
-            for(int i = 0; i < test.Count; i++)
+            for (int i = 0; i < test.Count; i++)
             {
                 Assert.IsTrue(test[i].Equals(res[i]));
             }
         }
 
+        [TestMethod]
+        public void GetSortedCopyByCaloricityTest()
+        {
+            var test = GetProductsExample();
+            var res = Logic.GetSortedCopyByCaloricity(test.ToArray());
+            Assert.AreEqual(955.88, res[0].Caloricity, 0.00001);
+        }
+
+        [TestMethod]
+        public void GetSortedCopyByCostTest()
+        {
+            var test = GetProductsExample();
+            var res = Logic.GetSortedCopyByCost(test.ToArray());
+            Assert.AreEqual(97.68, res[0].Price, 0.00001);
+        }
+
+        [TestMethod]
+        public void GetEqualProductsTest()
+        {
+            var test = GetProductsExample();
+            var res = Logic.GetEqualProducts(test.ToArray(), 97.68, 955.88);
+            Assert.AreEqual(97.68, res[0].Price, 0.00001);
+            Assert.AreEqual(1, res.Length);
+        }
+
+        [TestMethod]
+        public void GetProductsByIngiridientWeightTest()
+        {
+            var test = GetProductsExample();
+            var res = Logic.GetProductsByIngiridientWeight(test.ToArray(), "a", 0);
+            Assert.AreEqual(4, res.Length);
+        }
+
+        [TestMethod]
+        public void GetProductsByIngiridientsCountTest()
+        {
+            var test = GetProductsExample();
+            var res = Logic.GetProductsByIngiridientsCount(test.ToArray(), 3);
+            Assert.AreEqual(2, res.Length);
+        }
 
     }
 }
