@@ -9,14 +9,21 @@ using task1.DataClasses;
 
 namespace task1.Reader
 {
+    /// <summary>
+    /// Implementation of IDataScanner for JSON source
+    /// </summary>
     public class JSONScanner : IDataScanner
     {
+        /// <summary>
+        /// basic constructor
+        /// </summary>
         public JSONScanner()
         {
             settings = new() { TypeNameHandling = TypeNameHandling.Objects,
                                Formatting = Formatting.Indented };
         }
 
+        /// <inheritdoc/>
         public bool Open(object path)
         {
             this.path = path as string;
@@ -26,6 +33,7 @@ namespace task1.Reader
                 return false;
         }
 
+        /// <inheritdoc/>
         public bool Read(IDataCollector collector)
         {
             string jsonRepresentation = File.ReadAllText(path);

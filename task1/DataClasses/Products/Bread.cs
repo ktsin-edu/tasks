@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace task1.DataClasses.Products
 {
+    /// <summary>
+    /// Basic bread
+    /// </summary>
     [Serializable]
     public class Bread : BasicProduct
     {
-        public Bread(string productName, in List<Ingridient> ingridients, int prodCount) : base("Bread", productName, 1.2, prodCount)
+        /// <inheritdoc/>
+        public Bread(string productName, in List<Ingredient> ingredients, int prodCount) : base("Bread", productName, 1.2, prodCount)
         {
-            this.ingridients = ingridients;
+            this.ingredients = ingredients;
         }
     }
 }

@@ -16,48 +16,48 @@ namespace task1Tests
     {
         private static BasicProduct GetBasicProductExample()
         {
-            List<Ingridient> ingridients = new()
+            List<Ingredient> ingredients = new()
             {
-                new Ingridient("a", 100, 200, 0.2),
-                new Ingridient("b", 300, 100, 1.2),
-                new Ingridient("c", 167, 314, 0.3)
+                new Ingredient("a", 100, 200, 0.2),
+                new Ingredient("b", 300, 100, 1.2),
+                new Ingredient("c", 167, 314, 0.3)
             };
-            return new Bread("RWR", ingridients, 123);
+            return new Bread("RWR", ingredients, 123);
         }
 
         private static List<BasicProduct> GetProductsExample()
         {
             List<BasicProduct> products = new()
             {
-                new Bread("FISRT BREAD", new List<Ingridient> {
-                                                            new Ingridient("a", 45, 455, 2.1),
-                                                            new Ingridient("b", 1.02, 0.1, 1),
-                                                            new Ingridient("c", 5.4, 0.7, 0.4)}, 56),
-                new Cake("FISRT CAKE", new List<Ingridient> {
-                                                            new Ingridient("a", 12, 45, 2.1),
-                                                            new Ingridient("d", 0.25, 0.7, 0.4)}, 37),
-                new Loaf("FISRT LOAF", new List<Ingridient> {
-                                                            new Ingridient("a", 4, 45, 2.1),
-                                                            new Ingridient("d", 1, 45, 2.1),
-                                                            new Ingridient("j", 142, 45, 0.01),
-                                                            new Ingridient("t", 7, 74, 2.1),
-                                                            new Ingridient("d", 0.25, 0.7, 0.4)}, 90),
-                new Pie("FISRT PIE", new List<Ingridient> {
-                                                            new Ingridient("a", 4, 45, 2.1),
-                                                            new Ingridient("j", 142, 45, 0.01),
-                                                            new Ingridient("d", 0.25, 0.7, 0.4)}, 79),
-                new Scone("FISRT SCONE", new List<Ingridient> {
-                                                            new Ingridient("da", 1, 45, 2.1),
-                                                            new Ingridient("j", 142, 45, 0.01),
-                                                            new Ingridient("ta", 7, 74, 2.1),
-                                                            new Ingridient("d", 78, 0.7, 0.4)}, 21),
+                new Bread("FISRT BREAD", new List<Ingredient> {
+                                                            new Ingredient("a", 45, 455, 2.1),
+                                                            new Ingredient("b", 1.02, 0.1, 1),
+                                                            new Ingredient("c", 5.4, 0.7, 0.4)}, 56),
+                new Cake("FISRT CAKE", new List<Ingredient> {
+                                                            new Ingredient("a", 12, 45, 2.1),
+                                                            new Ingredient("d", 0.25, 0.7, 0.4)}, 37),
+                new Loaf("FISRT LOAF", new List<Ingredient> {
+                                                            new Ingredient("a", 4, 45, 2.1),
+                                                            new Ingredient("d", 1, 45, 2.1),
+                                                            new Ingredient("j", 142, 45, 0.01),
+                                                            new Ingredient("t", 7, 74, 2.1),
+                                                            new Ingredient("d", 0.25, 0.7, 0.4)}, 90),
+                new Pie("FISRT PIE", new List<Ingredient> {
+                                                            new Ingredient("a", 4, 45, 2.1),
+                                                            new Ingredient("j", 142, 45, 0.01),
+                                                            new Ingredient("d", 0.25, 0.7, 0.4)}, 79),
+                new Scone("FISRT SCONE", new List<Ingredient> {
+                                                            new Ingredient("da", 1, 45, 2.1),
+                                                            new Ingredient("j", 142, 45, 0.01),
+                                                            new Ingredient("ta", 7, 74, 2.1),
+                                                            new Ingredient("d", 78, 0.7, 0.4)}, 21),
             };
             return products;
         }
 
-        private static Ingridient GetIngridientExample()
+        private static Ingredient GetingredientExample()
         {
-            return new Ingridient("test name", 45, 124, 0.78);
+            return new Ingredient("test name", 45, 124, 0.78);
         }
 
         [TestMethod]

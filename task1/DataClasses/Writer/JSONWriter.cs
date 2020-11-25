@@ -10,8 +10,14 @@ using task1.Reader;
 
 namespace task1.Writer
 {
+    /// <summary>
+    /// Implementation of json serializer (IDataWriter)
+    /// </summary>
     public class JSONWriter : IDataWriter
     {
+        /// <summary>
+        /// parameterless constructor
+        /// </summary>
         public JSONWriter()
         {
             settings = new JsonSerializerSettings
@@ -21,6 +27,11 @@ namespace task1.Writer
             };
         }
 
+        /// <summary>
+        /// Preparing before writing
+        /// </summary>
+        /// <param name="path">path to file</param>
+        /// <returns></returns>
         public bool Open(object path)
         {
             this.path = path as string;
@@ -30,6 +41,11 @@ namespace task1.Writer
                 return false;
         }
 
+        /// <summary>
+        /// Method for writing serialized data to file
+        /// </summary>
+        /// <param name="collector">class that implements IDataCollector interface</param>
+        /// <returns></returns>
         public bool Write(IDataCollector collector)
         {
             try

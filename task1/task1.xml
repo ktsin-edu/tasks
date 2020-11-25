@@ -1,0 +1,239 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>task1</name>
+    </assembly>
+    <members>
+        <member name="T:task1.DataClasses.Products.BasicCollector">
+            <summary>
+            Represents basic collector for BasicProduct instances
+            </summary>
+        </member>
+        <member name="M:task1.DataClasses.Products.BasicCollector.#ctor">
+            <summary>
+            Basic constructor
+            </summary>
+        </member>
+        <member name="M:task1.DataClasses.Products.BasicCollector.#ctor(System.Collections.Generic.List{task1.DataClasses.BasicProduct})">
+            <summary>
+            Accepts list of BasicProducts
+            </summary>
+            <param name="products">List of BasicProducts instances</param>
+        </member>
+        <member name="M:task1.DataClasses.Products.BasicCollector.GetSource">
+            <summary>
+            Method for getting the source array
+            </summary>
+            <returns>BasicProduct[]</returns>
+        </member>
+        <member name="M:task1.DataClasses.Products.BasicCollector.Push(task1.DataClasses.BasicProduct)">
+            <summary>
+            Adds new BasicProduct instance to collector
+            </summary>
+            <param name="product">Basicroduct instance</param>
+        </member>
+        <member name="M:task1.DataClasses.Products.Bread.#ctor(System.String,System.Collections.Generic.List{task1.DataClasses.ingredient}@,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:task1.DataClasses.Products.Cake.#ctor(System.String,System.Collections.Generic.List{task1.DataClasses.ingredient}@,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:task1.DataClasses.Products.Loaf.#ctor(System.String,System.Collections.Generic.List{task1.DataClasses.ingredient},System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="T:task1.DataClasses.Products.Pie">
+            <summary>
+            Product type -- Pie
+            </summary>
+        </member>
+        <member name="M:task1.DataClasses.Products.Pie.#ctor(System.String,System.Collections.Generic.List{task1.DataClasses.ingredient},System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ingredients">List of ingredients</param>
+            <param name="prodCount"> Count of produced pies </param>
+            <param name="productName"> Pie name </param>
+        </member>
+        <member name="M:task1.DataClasses.Products.Scone.#ctor(System.String,System.Collections.Generic.List{task1.DataClasses.ingredient},System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="T:task1.DataClasses.BasicProduct">
+            <summary>
+            Represents abstract class of product
+            </summary>
+        </member>
+        <member name="M:task1.DataClasses.BasicProduct.#ctor(System.String,System.String,System.Double,System.Int32)">
+            <summary>
+            Basic constructor
+            </summary>
+            <param name="categoryName">Name of product category</param>
+            <param name="productName">Name of product</param>
+            <param name="overprice">Value of overpricing</param>
+            <param name="prodCount">Produced bakery:</param>
+        </member>
+        <member name="P:task1.DataClasses.BasicProduct.Caloricity">
+            <summary>
+            Caloricity of product
+            </summary>
+        </member>
+        <member name="P:task1.DataClasses.BasicProduct.Price">
+            <summary>
+            Basic price of product
+            </summary>
+        </member>
+        <member name="P:task1.DataClasses.BasicProduct.SalePrice">
+            <summary>
+            Price of product with overprice
+            </summary>
+        </member>
+        <member name="F:task1.DataClasses.BasicProduct.categoryName">
+            <summary>
+            Name of product category
+            </summary>
+        </member>
+        <member name="F:task1.DataClasses.BasicProduct.productName">
+            <summary>
+            Name of product
+            </summary>
+        </member>
+        <member name="M:task1.DataClasses.BasicProduct.ToString">
+            <summary>
+            basic ToString()
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:task1.DataClasses.BasicProduct.GetHashCode">
+            <summary>
+            basic GetHashCode()
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:task1.DataClasses.BasicProduct.Equals(System.Object)">
+            <summary>
+            basic Equals()
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="F:task1.DataClasses.BasicProduct.ingredients">
+            <summary>
+            List of ingridients
+            </summary>
+        </member>
+        <member name="F:task1.DataClasses.BasicProduct.overprice">
+            <summary>
+            overprice
+            </summary>
+        </member>
+        <member name="F:task1.DataClasses.BasicProduct.productCount">
+            <summary>
+            Produced bakery
+            </summary>
+        </member>
+        <member name="T:task1.Reader.IDataCollector">
+            <summary>
+            Interface for collectors of BasicProducts
+            </summary>
+        </member>
+        <member name="M:task1.Reader.IDataCollector.Push(task1.DataClasses.BasicProduct)">
+            <summary>
+            Adds instance of BasicProduct to current collector
+            </summary>
+            <param name="product">instance of BasicProduct</param>
+        </member>
+        <member name="M:task1.Reader.IDataCollector.GetSource">
+            <summary>
+            getting the source array
+            </summary>
+            <returns> source array </returns>
+        </member>
+        <member name="T:task1.Writer.IDataWriter">
+            <summary>
+            Basic interface for saving state of IDataCollector
+            </summary>
+        </member>
+        <member name="M:task1.Writer.IDataWriter.Open(System.Object)">
+            <summary>
+            Preparing before writing
+            </summary>
+            <param name="path">an object that describes where to save data</param>
+            <returns></returns>
+        </member>
+        <member name="M:task1.Writer.IDataWriter.Write(task1.Reader.IDataCollector)">
+            <summary>
+            Method for saving state of IDataCollector
+            </summary>
+            <param name="collector">class that implements IDataCollector interface</param>
+            <returns></returns>
+        </member>
+        <member name="T:task1.Writer.JSONWriter">
+            <summary>
+            Implementation of json serializer (IDataWriter)
+            </summary>
+        </member>
+        <member name="M:task1.Writer.JSONWriter.#ctor">
+            <summary>
+            parameterless constructor
+            </summary>
+        </member>
+        <member name="M:task1.Writer.JSONWriter.Open(System.Object)">
+            <summary>
+            Preparing before writing
+            </summary>
+            <param name="path">path to file</param>
+            <returns></returns>
+        </member>
+        <member name="M:task1.Writer.JSONWriter.Write(task1.Reader.IDataCollector)">
+            <summary>
+            Method for writing serialized data to file
+            </summary>
+            <param name="collector">class that implements IDataCollector interface</param>
+            <returns></returns>
+        </member>
+        <member name="T:task1.Logic">
+            <summary>
+            Provides static methods for business-logic
+            </summary>
+        </member>
+        <member name="M:task1.Logic.GetSortedCopyByCaloricity(task1.DataClasses.BasicProduct[])">
+            <summary>
+            Getting sorted copy by caloricity of BasicProduct[]
+            </summary>
+            <param name="products">BasicProduct[] source</param>
+            <returns> Returns sorted copy of products</returns>
+        </member>
+        <member name="M:task1.Logic.GetSortedCopyByCost(task1.DataClasses.BasicProduct[])">
+            <summary>
+            Getting sorted copy by price of BasicProduct[]
+            </summary>
+            <param name="products">BasicProduct[] source</param>
+            <returns> Returns sorted copy of products</returns>
+        </member>
+        <member name="M:task1.Logic.GetEqualProducts(task1.DataClasses.BasicProduct[],System.Double,System.Double)">
+            <summary>
+            Getting array of elements which has equal price and caloricity with provided by parameters
+            </summary>
+            <param name="products">BasicProducts[] source</param>
+            <param name="price">Price of BasicProduct</param>
+            <param name="caloricity">Caloricity of BasicProduct</param>
+            <returns></returns>
+        </member>
+        <member name="M:task1.Logic.GetProductsByIngiridientWeight(task1.DataClasses.BasicProduct[],System.String,System.Double)">
+            <summary>
+            Returns array of elements which have in their composition ingredient with greater weight than provided in parameters
+            </summary>
+            <param name="products">BasicProducts[] source</param>
+            <param name="ingredientName"> ingredient name</param>
+            <param name="weight">Weight level</param>
+            <returns>BasicProduct[] array</returns>
+        </member>
+        <member name="M:task1.Logic.GetProductsByIngiridientsCount(task1.DataClasses.BasicProduct[],System.Int32)">
+            <summary>
+            Returns array of elements which have in their composition ingredients count greater than provided in parameters
+            </summary>
+            <param name="products">BasicProducts[] source</param>
+            <param name="ingredientCount"> Ingredients count </param>
+            <returns>BasicProduct[] array</returns>
+        </member>
+    </members>
+</doc>
