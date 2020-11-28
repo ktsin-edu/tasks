@@ -1,8 +1,6 @@
 ﻿using System;
 
-namespace task1
+namespace task2
 {
-    public class Class1
-    {
-    }
+
 }
