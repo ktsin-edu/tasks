@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace task1Tests
+namespace task2Tests
 {
     [TestClass]
     public class UnitTests

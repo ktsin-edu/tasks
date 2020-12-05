@@ -14,7 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\task1\task2.csproj" />
+    <ProjectReference Include="..\ExceptionsLibrary\ExceptionsLibrary.csproj" />
+    <ProjectReference Include="..\task1\ProductsClassLibrary.csproj" />
   </ItemGroup>
 
 </Project>
