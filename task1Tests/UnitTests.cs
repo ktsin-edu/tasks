@@ -1,10 +1,13 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace task2Tests
 {
-    [TestClass]
     public class UnitTests
     {
-
+        [Fact]
+        public void test1()
+        {
+            Assert.True(true);
+        }
     }
 }
