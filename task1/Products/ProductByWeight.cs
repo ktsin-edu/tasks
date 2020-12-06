@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductsClassLibrary
 {
-    public abstract class ProductByWeight : GenericProduct
+    public abstract class ProductByWeight /*: GenericProduct*/
     {
     }
 }
