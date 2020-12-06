@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductsClassLibrary
 {
+    [Serializable]
     public class Smartphones : GenericPhones
     {
         public Smartphones(SmartphonesParams param, string name, double overprice, uint count, double price) 

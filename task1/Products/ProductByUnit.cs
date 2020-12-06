@@ -7,6 +7,7 @@ using System.Reflection;
 
 namespace ProductsClassLibrary
 {
+    [Serializable]
     public class ProductByUnit : GenericProduct
     {
         public ProductByUnit(string name, double overprice, uint count, double price) : base(count, name, overprice, price) { }
@@ -27,7 +28,7 @@ namespace ProductsClassLibrary
         public static ProductByUnit operator- (ProductByUnit a, int b)
         {
             var clone = (a.MemberwiseClone() as ProductByUnit);
-            if (clone.Count - (uint)b < 0)
+            if ((int)clone.Count - b < 0)
                 throw new ArgumentOutOfRangeException($"{a.Count} - {(uint)b} < 0");
             clone.Count -= (uint)Math.Abs(b);
             return clone;

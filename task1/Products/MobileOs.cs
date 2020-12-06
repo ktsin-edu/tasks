@@ -1,5 +1,8 @@
-﻿namespace ProductsClassLibrary
+﻿using System;
+
+namespace ProductsClassLibrary
 {
+    [Serializable]
     public enum MobileOs
     {
         Android,

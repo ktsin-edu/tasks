@@ -3,9 +3,11 @@ using System.Text;
 
 namespace ProductsClassLibrary
 {
+    [Serializable]
     public class GenericPhones : ProductByUnit
     {
-        public GenericPhones(MobilePhoneParametersBasic param, string name, double overprice, uint count, double price) : base(name, overprice, count, price)
+        public GenericPhones(MobilePhoneParametersBasic param, string name, double overprice, uint count, double price)
+            : base(name, overprice, count, price)
         {
             Diagonal = param.diag;
             BatteryPower = param.batt;
@@ -72,6 +74,7 @@ namespace ProductsClassLibrary
         public Int32 CellularNetworkType;
     }
 
+    [Serializable]
     public enum NetworkType
     {
         _1G = 0x0001,

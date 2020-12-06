@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductsClassLibrary
 {
+    [Serializable]
     public class Netbooks : GenericNotebooks
     {
         public Netbooks(MobileParametersEx param, string name, double overprice, double price, uint count) : base(param, name, overprice, price, count)

@@ -1,27 +1,112 @@
 using ProductsClassLibrary;
+using System;
 using Xunit;
 
 namespace task2Tests
 {
     public class UnitTests
     {
-        [Fact]
-        public void test1()
+        public Tuple<Smartphones, Smartphones> GetTwoSmartphones()
         {
-            var tmp = new Smartphones(new SmartphonesParams() {
-                                        CPUVendor = "VCPU",
-                                        CPUCharacteristics="2.2GHz",
-                                        batt=5.12F,
-                                        ram = 4.0F,
-                                        internalStor=16.0F,
-                                        os=MobileOs.GenericLinux,
-                                        Description="No desc.",
-                                        diag=5.5F,
-                                        CellularNetworkType = ((int)NetworkType._2G | (int)NetworkType._2_5G | (int)NetworkType._3G | (int)NetworkType._3G)
+            var tmp1 = new Smartphones(new SmartphonesParams()
+            {
+                CPUVendor = "VCPU",
+                CPUCharacteristics = "2.2GHz",
+                batt = 5.12F,
+                ram = 4.0F,
+                internalStor = 16.0F,
+                os = MobileOs.GenericLinux,
+                Description = "No desc.",
+                diag = 5.5F,
+                CellularNetworkType = ((int)NetworkType._2G | (int)NetworkType._2_5G | (int)NetworkType._3G | (int)NetworkType._3G)
             },
-                                        "name", 1.8, 100, 900);
-            string temp = tmp.ToString();
-            Assert.True(true);
+                            "name", 1.8, 100, 900);
+            var tmp2 = new Smartphones(new SmartphonesParams()
+            {
+                CPUVendor = "VCPU",
+                CPUCharacteristics = "2.2GHz",
+                batt = 5.12F,
+                ram = 4.0F,
+                internalStor = 16.0F,
+                os = MobileOs.GenericLinux,
+                Description = "No desc.",
+                diag = 5.5F,
+                CellularNetworkType = ((int)NetworkType._2G | (int)NetworkType._2_5G | (int)NetworkType._3G | (int)NetworkType._3G)
+            },
+                                        "name", 1.8, 100, 370);
+            return new Tuple<Smartphones, Smartphones>(tmp1, tmp2);
         }
+
+        public GenericTablet GetTablet()
+        {
+            return new GenericTablet(new MobileParameters() {batt = 37.6F,
+                                                            diag=13.3F,
+                                                            internalStor=64.0F,
+                                                            os=MobileOs.GenericLinux,
+                                                            ram=8014.14F  },
+                                                            1.3, "Generic Tablet!!", 21, 2100);
+        }
+
+        [Fact]
+        public void CheckPlusOperatorPositive()
+        {
+            var tmp = GetTwoSmartphones();
+            var tmp3 = tmp.Item1 + tmp.Item2;
+            Assert.Equal(635, tmp3.PurchaseValue);
+        }
+
+        [Fact]
+        public void CheckPlusOperatorNegative()
+        {
+            var tmp = GetTwoSmartphones();
+            tmp.Item2.ProductName = "NaN";
+            Assert.Throws<ArgumentException>(() => tmp.Item1 + tmp.Item2);
+        }
+
+        [Fact]
+        public void CheckSubOperatorPositive()
+        {
+            var tmp = GetTwoSmartphones();
+            var res = tmp.Item1 - 50;
+            Assert.Equal((uint)50, res.Count);
+        }
+
+        [Fact]
+        public void CheckSubOperatorNegative()
+        {
+            var tmp = GetTwoSmartphones();
+            Assert.Throws<ArgumentOutOfRangeException>(() => tmp.Item1 - 500);
+        }
+
+        [Fact]
+        public void CheckTypeCastToIntDouble()
+        {
+            var tmp = GetTwoSmartphones();
+            Assert.Equal(16200000, (int)tmp.Item1);
+            Assert.Equal(16200000.0, (double)tmp.Item1);
+        }
+
+        [Fact]
+        public void CheckTypesCastNotebookTablets()
+        {
+            bool flag = true;
+            try
+            {
+                var tmp = GetTablet();
+                var tmp0 = (GenericNotebooks)tmp;
+            }
+            catch
+            {
+                flag = false;
+            }
+            finally
+            {
+                Assert.True(flag);
+            }
+
+        }
+
+
+
     }
 }
