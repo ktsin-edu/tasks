@@ -7,12 +7,26 @@ using System.Threading.Tasks;
 
 namespace ProductsClassLibrary
 {
+    /// <summary>
+    /// Realistion for Netbooks
+    /// </summary>
     [Serializable]
     public class Netbooks : GenericNotebooks
     {
+        /// <summary>
+        /// JSON constructor
+        /// </summary>
         [JsonConstructor]
         public Netbooks(string name, double overprice, double price, uint count) : base(new(), name, overprice, price, count) { }
 
+        /// <summary>
+        /// Main constructor
+        /// </summary>
+        /// <param name="param">prams of wireless comm.</param>
+        /// <param name="name"></param>
+        /// <param name="overprice"></param>
+        /// <param name="price"></param>
+        /// <param name="count"></param>
         public Netbooks(MobileParametersEx param, string name, double overprice, double price, uint count) : base(param, name, overprice, price, count)
         {
             WiFi = param.WiFi;
@@ -22,16 +36,19 @@ namespace ProductsClassLibrary
             Weight = param.Weight;
         }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             return base.ToString() + $"\nWeight: {Weight}, WiFi: {WiFi}, Cell.: {Cellular}, BT: {Bluetooth}, NFC: {NFC}";
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             return HashCode.Combine(base.GetHashCode(), WiFi, Cellular, Bluetooth, NFC, Weight);
         }
 
+        /// <inheritdoc/>
         public override bool Equals(object obj)
         {
             Netbooks tmp = obj as Netbooks;
@@ -46,6 +63,9 @@ namespace ProductsClassLibrary
 
     }
 
+    /// <summary>
+    /// Parameters for Devices with wireless communication.
+    /// </summary>
     public class MobileParametersEx : MobileParameters
     {
         public bool WiFi;

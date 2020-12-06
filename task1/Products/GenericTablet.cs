@@ -7,11 +7,26 @@ using System.Threading.Tasks;
 
 namespace ProductsClassLibrary
 {
+    /// <summary>
+    /// Generic tablets
+    /// </summary>
     [Serializable]
     public class GenericTablet : ProductByUnit
     {
+        /// <summary>
+        /// JSON constructor
+        /// </summary>
         [JsonConstructor]
         public GenericTablet(double overprice, string name, uint count, double price) : base(name, overprice, count, price) { }
+
+        /// <summary>
+        /// Main constructor
+        /// </summary>
+        /// <param name="param">params for any devices with screen</param>
+        /// <param name="overprice"></param>
+        /// <param name="name"></param>
+        /// <param name="count"></param>
+        /// <param name="price"></param>
         public GenericTablet(MobileParameters param, double overprice, string name, uint count, double price) : base(name, overprice, count, price)
         {
             Diagonal = param.diag;
@@ -21,6 +36,10 @@ namespace ProductsClassLibrary
             Os = param.os;
         }
 
+        /// <summary>
+        /// casting GenericTablet to Notebook
+        /// </summary>
+        /// <param name="a"></param>
         public static explicit operator GenericNotebooks(GenericTablet a)
         {
             var res = new GenericNotebooks(new MobileParameters()
@@ -42,7 +61,9 @@ namespace ProductsClassLibrary
     }
 
 
-
+    /// <summary>
+    /// main parameters of any electronic device with screen
+    /// </summary>
     public class MobileParameters
     {
         public float diag;

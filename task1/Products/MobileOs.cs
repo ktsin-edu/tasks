@@ -2,6 +2,9 @@
 
 namespace ProductsClassLibrary
 {
+    /// <summary>
+    /// Description of mobile os
+    /// </summary>
     [Serializable]
     public enum MobileOs
     {
