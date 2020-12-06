@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,9 @@ namespace ProductsClassLibrary
     [Serializable]
     public class Netbooks : GenericNotebooks
     {
+        [JsonConstructor]
+        public Netbooks(string name, double overprice, double price, uint count) : base(new(), name, overprice, price, count) { }
+
         public Netbooks(MobileParametersEx param, string name, double overprice, double price, uint count) : base(param, name, overprice, price, count)
         {
             WiFi = param.WiFi;

@@ -47,6 +47,17 @@ namespace task2Tests
                                                             1.3, "Generic Tablet!!", 21, 2100);
         }
 
+        public BasicCollector GetTestData()
+        {
+            var collector = new BasicCollector();
+            var tmp = GetTwoSmartphones();
+            collector.Push(tmp.Item1);
+            collector.Push(tmp.Item2);
+            collector.Push(GetTablet());
+            collector.Push((GenericNotebooks)GetTablet());
+            return collector;
+        }
+
         [Fact]
         public void CheckPlusOperatorPositive()
         {
@@ -104,6 +115,29 @@ namespace task2Tests
                 Assert.True(flag);
             }
 
+        }
+
+        [Fact]
+        public void TestJSONSerializer()
+        {
+            var collector = GetTestData();
+            var write = new JSONWriter();
+            Assert.True(write.Open("jsontest.json"));
+            Assert.True(write.Write(collector));
+        }
+
+        [Fact]
+        public void TestJSONDeserializer()
+        {
+            var collector = GetTestData();
+            var ncollector = new BasicCollector();
+            var read = new JSONScanner();
+            Assert.True(read.Open("jsontest.json"));
+            Assert.True(read.Read(ncollector));
+            var a = collector.GetSource();
+            var b = ncollector.GetSource();
+            for (int i = 0; i < a.Length; i++)
+                Assert.Equal(a[i], b[i]);
         }
 
 

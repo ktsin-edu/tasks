@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,8 @@ namespace ProductsClassLibrary
     [Serializable]
     public class GenericTablet : ProductByUnit
     {
+        [JsonConstructor]
+        public GenericTablet(double overprice, string name, uint count, double price) : base(name, overprice, count, price) { }
         public GenericTablet(MobileParameters param, double overprice, string name, uint count, double price) : base(name, overprice, count, price)
         {
             Diagonal = param.diag;

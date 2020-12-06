@@ -6,6 +6,7 @@ namespace ProductsClassLibrary
     [Serializable]
     public class GenericPhones : ProductByUnit
     {
+        public GenericPhones(string name, double overprice, uint count, double price) : base(name, overprice, count, price)  { }
         public GenericPhones(MobilePhoneParametersBasic param, string name, double overprice, uint count, double price)
             : base(name, overprice, count, price)
         {

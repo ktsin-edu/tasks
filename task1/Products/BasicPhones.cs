@@ -9,6 +9,7 @@ namespace ProductsClassLibrary
     [Serializable]
     public class BasicPhones : GenericPhones
     {
+        public BasicPhones(byte simCount, string name, double overprice, uint count, double price) : base(new(), name, overprice, count, price) { }
         public BasicPhones(byte simCount, MobilePhoneParametersBasic param, string name, double overprice, uint count, double price)
             : base(param, name, overprice, count, price)
         {
@@ -29,6 +30,7 @@ namespace ProductsClassLibrary
         {
             return base.ToString() + $"; Sim counts: {SimCount}";
         }
+
         public byte SimCount { get; set; }
     }
 }

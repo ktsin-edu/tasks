@@ -37,7 +37,7 @@ namespace ProductsClassLibrary
         {
             string jsonRepresentation = File.ReadAllText(path);
             var list = JsonConvert
-                        .DeserializeObject<List<BasicProduct>>(jsonRepresentation, 
+                        .DeserializeObject<List<GenericProduct>>(jsonRepresentation, 
                                                                settings);
             if (list.Count != 0)
             {

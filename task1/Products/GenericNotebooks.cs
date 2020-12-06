@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,9 @@ namespace ProductsClassLibrary
     [Serializable]
     public class GenericNotebooks : ProductByUnit
     {
+        [JsonConstructor]
+        public GenericNotebooks(string name, double overprice, double price, uint count) : base(name, overprice, count, price) { }
+
         public GenericNotebooks(MobileParameters param, string name, double overprice, double price, uint count) : base(name, overprice, count, price)
         {
             Diagonal = param.diag;

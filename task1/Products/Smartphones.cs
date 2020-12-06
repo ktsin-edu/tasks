@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,8 @@ namespace ProductsClassLibrary
     [Serializable]
     public class Smartphones : GenericPhones
     {
+        [JsonConstructor]
+        public Smartphones(string name, double overprice, uint count, double price) : base(new(), name, overprice, count, price) { }
         public Smartphones(SmartphonesParams param, string name, double overprice, uint count, double price) 
             : base(param, name, overprice, count, price)
         {
